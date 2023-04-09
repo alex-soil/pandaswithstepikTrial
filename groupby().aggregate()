@@ -1,0 +1,44 @@
+import pandas as pd
+df = pd.read_csv()
+
+df\
+   .groupby("Title", as_index=False)\
+   .aggregate({"Income":"sum"})\
+   .sort_values("Income", ascending= False)
+   
+   #title - name of your column(obj), aggregate by numbers belonging to same name in title object.
+    #EX: title is name of your course, income same course multiply namesso you are summing by name
+       
+       
+       #same, but grouping by title and city
+       df\
+   .groupby(["Title", "City"],  as_index=False)\
+   .aggregate({"Income":"sum"})\
+   .sort_values("Income", ascending= False)\
+   
+   #create new variable with name for it(income_by_Cities)
+   
+   income_by_cities = df\
+   .groupby(["Title", "City"],  as_index=False)\
+   .aggregate({"Income":"sum"})\
+   .sort_values("Income", ascending= False)\
+   
+   # using query to choose or filter particular data 
+   df\
+   .query("Status == 'Завершен' ")\
+   .groupby(["Title"],  as_index=False)\
+   .aggregate({"Income":"sum", "Num": "count"})\
+   .sort_values("Income", ascending= False)
+   
+   
+   #using IF-Else to check your mistakes, new data MONEY compare to initial data DF
+   money= df\
+   .query("Status == 'Завершен' ")\
+   .groupby(["Title"],  as_index=False)\
+   .aggregate({"Income":"sum", "Num": "count"})\
+   .sort_values("Income", ascending= False)
+   
+   if int(money.Income.sum()) == int(df.Income.sum()) :
+    print ("Ok")
+   else:
+    print ("Error")
