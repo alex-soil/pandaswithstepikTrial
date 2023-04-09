@@ -1,0 +1,7 @@
+import pandas as pd
+df = pd.read_csv("lesson_1_data.csv", encoding = "windows-1251", sep = ";") 
+df=df.rename(columns={"Номер": "Num", "Дата создания": "Date", 
+                   "Дата оплаты": "Payment_day", 
+                   'Статус': "State", 
+                   'Заработано': "Income", 'Город': "City", 'Платежная система': "Payment_method"})  # RENAMING here for god sake
+df.head(3)
