@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+nba=pd.read_csv("nba.csv")
+nba.head(3)
+         #Show where is NaN - TRUE
+nba.Salary.isna()
+         #show only NaN lines
+nba[nba.Salary.isna()]
+nba = nba.fillna({"Salary": 0})
+nba["Salary"] = nba["Salary"].astype("int")
+
+#query
+nba.query("Age > 39")
+#analysis
+nba.groupby("Team", as_index=False).agg({"Salary": "sum"})\
+    .sort_values("Salary", ascending = False)
