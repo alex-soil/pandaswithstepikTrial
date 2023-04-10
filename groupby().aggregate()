@@ -42,3 +42,11 @@ df\
     print ("Ok")
    else:
     print ("Error")
+                                          #Unique users buying by city
+    df[df.Num >0].groupby("City")\
+  .agg({"Num": pd.Series.nunique})\
+  .sort_values("Num", ascending = False)
+                                           #Unique users buying by course title with PD SERIES NUNIQUE
+  df[df.Num >0].groupby("Title")\
+  .agg({"Num": pd.Series.nunique})\
+  .sort_values("Num", ascending = False)
