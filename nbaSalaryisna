@@ -16,3 +16,5 @@ nba.query("Age > 39")
 #analysis
 nba.groupby("Team", as_index=False).agg({"Salary": "sum"})\
     .sort_values("Salary", ascending = False)
+#drop dublicates if two same value in different columns
+df.drop_duplicates(subset = ["First Name", "Team"], inplace = True)
