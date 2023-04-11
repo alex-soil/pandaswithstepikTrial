@@ -50,3 +50,12 @@ df\
   df[df.Num >0].groupby("Title")\
   .agg({"Num": pd.Series.nunique})\
   .sort_values("Num", ascending = False)
+
+
+moscow.groupby("Num", as_index=False)\
+     .agg({"Income":"sum"})\
+     .sort_values("Income", ascending =False).Income.plot(kind="hist")
+     
+     moscowIncome["Income"].plot(kind ='hist')
+     
+     
